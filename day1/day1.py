@@ -1,5 +1,6 @@
 """day1"""
 import itertools
+import os
 
 def first_duplicate_frequency(ints):
     freq = 0
@@ -11,9 +12,9 @@ def first_duplicate_frequency(ints):
         freqs.add(freq)
 
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
-
-with open('day1/day1.txt') as f:
+with open(dir_path + '/day1.txt') as f:
     ints = [int(i) for i in f.readlines()]
     print(sum(ints))
     print(first_duplicate_frequency(ints))
