@@ -15,7 +15,8 @@ def main():
         importlib.import_module('adventofcode2018.day{i}.day{i}'.format(
             i=args.day_number))
     except ModuleNotFoundError:
-        print('Error: could not find solution for day %s.' % args.day_number)
+        print(('Error: could not find solution for day %s. Did you run python '
+              'with the -m flag?') % args.day_number)
 
 
 if __name__ == '__main__':
