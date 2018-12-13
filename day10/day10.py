@@ -54,7 +54,9 @@ def print_array(points):
 
 def print_at_smallest_height_and_width(points):
     width_plus_height = 100000000000
+    time = 0
     while True:
+        time += 1
         for point in points:
             point.step()
         new_width_plus_height = sum(width_and_height(points))
@@ -63,6 +65,7 @@ def print_at_smallest_height_and_width(points):
                 point.step_backwards()
             translate_to_0(points)
             print_array(points)
+            print(time - 1)
             break
         width_plus_height = new_width_plus_height
 
