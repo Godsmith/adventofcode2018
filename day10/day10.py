@@ -1,3 +1,6 @@
+from .. import util
+
+
 class Point:
     def __init__(self, x, y, dx, dy):
         self.x = x
@@ -17,13 +20,13 @@ class Point:
         return 'Point(%s, %s, %s, %s)' % (self.x, self.y, self.dx, self.dy)
 
 
-
 def width_and_height(points):
     xs = [point.x for point in points]
     ys = [point.y for point in points]
     width = max(xs) - min(xs) + 1
     height = max(ys) - min(ys) + 1
     return width, height
+
 
 def translate_to_0(points):
     xs = [point.x for point in points]
@@ -34,6 +37,7 @@ def translate_to_0(points):
     for point in points:
         point.x -= min_x
         point.y -= min_y
+
 
 def print_array(points):
     array = []
@@ -46,6 +50,7 @@ def print_array(points):
         for char in line:
             print(char, end='')
         print()
+
 
 def print_at_smallest_height_and_width(points):
     width_plus_height = 100000000000
@@ -63,8 +68,14 @@ def print_at_smallest_height_and_width(points):
 
 
 # load points from list
-points = [Point(2, 0, -1, 0), Point(-3, 1, 1, 0)]
+# points = [Point(2, 0, -1, 0), Point(-3, 1, 1, 0)]
+points = []
+
+for line in util.input_lines(10):
+    x = int(line.split('<')[1].split(',')[0])
+    y = int(line.split(',')[1].split('>')[0])
+    dx = int(line.split('<')[2].split(',')[0])
+    dy = int(line.split(',')[2].split('>')[0])
+    points.append(Point(x, y, dx, dy))
 
 print_at_smallest_height_and_width(points)
-
-
