@@ -6,4 +6,4 @@ def input_lines(day):
     input_path = f'{dir_path}/day{day}/input.txt'
 
     with open(input_path) as f:
-        return [line.strip() for line in f.readlines()]
+        return [line.strip('\n\r') for line in f.readlines()]
