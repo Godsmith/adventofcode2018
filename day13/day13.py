@@ -95,6 +95,7 @@ class Track:
         moved = set()
         while len(moved) < len(self.carts):
             cart = [cart for cart in self.carts if cart not in moved][0]
+            cart.move()
             other_from_coordinate = {(other.x, other.y): other for other in
                                       self.carts if other != cart}
             if (cart.x, cart.y) in other_from_coordinate:
@@ -102,16 +103,11 @@ class Track:
                 self.latest_crash_location = (cart.x, cart.y)
                 self.carts.remove(cart)
                 self.carts.remove(other)
-                if cart in moved:
-                    moved.remove(cart)
                 if other in moved:
                     moved.remove(other)
                 continue
-            cart.move()
             cart.turn(self.terrain(cart.x, cart.y))
             moved.add(cart)
-        print(self)
-        print(len(self.carts))
 
     def first_crash(self):
         while not self.latest_crash_location:
